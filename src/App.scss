@@ -19,6 +19,7 @@
     padding: 10px;
     color: white;
     border-radius: 5px;
+    transition: 0.5s linear;
   }
    #new-quote{
     padding: 10px;
@@ -26,6 +27,7 @@
     border-radius: 5px;
     border: none;
     cursor: pointer;
+    transition: 0.5s linear;
   }
  }
  }  
@@ -38,5 +40,6 @@
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
+    transition: 0.5s linear;
   }
 }
