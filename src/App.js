@@ -11,7 +11,7 @@ function App() {
   const [, setRandomNumber] = useState(0)
   const [quotesArray, setQuotesArray] = useState(null)
   const [accentColor, setaccentColor] = useState('#16a085')
-
+  const [opacity, setOpacity] = useState(false);
   const fetchQuotes = async (url) => {
     const response = await fetch(url)
     const parsedJSON = await response.json()
@@ -25,11 +25,16 @@ function App() {
   const getRandomQuote = () => {
     let randomInteger = Math.floor(quotesArray.length*Math.random())
     let randomInteger2 = Math.floor(colors.length*Math.random())
-    setRandomNumber(randomInteger)
-    setQuote(quotesArray[randomInteger].quote)
-    setAuthor(quotesArray[randomInteger].author)
-    setaccentColor(colors[randomInteger2])
+    setRandomNumber(randomInteger);
+    setOpacity(false);
+    setaccentColor(colors[randomInteger2]);
+    setTimeout(() => {
+      setOpacity(true);
+      setQuote(quotesArray[randomInteger].quote);
+      setAuthor(quotesArray[randomInteger].author);
+    }, 500);
   }
+  
   
   var colors = [
     '#16a085',
@@ -50,10 +55,10 @@ function App() {
     <div className="App">
       <header className="App-header" style={{backgroundColor:accentColor}}>
         <div id="quote-box" style={{color:accentColor}}>        
-        <p id="text">
+        <p id="text" className={opacity ? "show" : "hide"}>
         <FontAwesomeIcon icon={ faQuoteLeft } /> {quote}
         </p>
-        <p id="author">- {author}</p>
+        <p id="author" className={opacity ? "show" : "hide"}>- {author}</p>
         <div className='button'>
         <a id="tweet-quote" style={{backgroundColor:accentColor}} href={encodeURI(`http://www.twitter.com/intent/tweet?text=${quote} -${author}`)}><FontAwesomeIcon icon={faTwitter}/></a>
         <button id="new-quote" style={{backgroundColor: accentColor, color:'white'}} onClick={() => getRandomQuote()}>New quote</button>        
