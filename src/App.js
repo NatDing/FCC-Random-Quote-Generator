@@ -11,7 +11,7 @@ function App() {
   const [, setRandomNumber] = useState(0)
   const [quotesArray, setQuotesArray] = useState(null)
   const [accentColor, setaccentColor] = useState('#16a085')
-  const [opacity, setOpacity] = useState(false);
+  const [opacity, setOpacity] = useState(true);
   const fetchQuotes = async (url) => {
     const response = await fetch(url)
     const parsedJSON = await response.json()
